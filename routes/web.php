@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use  App\Http\Controllers\AdminController;
 
 Route::view('/', 'admin.home');
 
@@ -13,3 +14,4 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 require __DIR__.'/auth.php';
+Route::get('/farmer registration',[AdminController::class, 'farmer_registration']);
