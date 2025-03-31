@@ -15,3 +15,4 @@ Route::view('profile', 'profile')
 
 require __DIR__.'/auth.php';
 Route::get('/farmer registration',[AdminController::class, 'farmer_registration']);
+Route::post('/registered', [AdminController::class, 'storeFarmer'])->name('layouts.registered');
