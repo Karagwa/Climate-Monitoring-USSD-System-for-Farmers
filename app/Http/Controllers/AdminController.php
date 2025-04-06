@@ -7,31 +7,33 @@ use App\Models\Farmer;
 
 class AdminController extends Controller
 {
-    public function farmer_registration(){
-        return view('layouts.farmerregistration');
+    public function farmerRegistration(){
+        return view('admin.farmer-registration');
     }
     public function storeFarmer(Request $request)
     {
-        // Validate form inputs
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'phone' => 'required|string|max:15',
+            'phone' => 'required|string|max:15|unique:farmers,phone',
             'location' => 'required|string|max:255',
             'national_id' => 'required|string|max:20|unique:farmers,national_id',
-            'farming_type' => 'required|string',
+            'farming_type' => 'required|string|in:crop,livestock,mixed',
         ]);
 
-        // Save the farmer data to the database
-        Farmer::create([
-            'name' => $request->name,
-            'phone' => $request->phone,
-            'location' => $request->location,
-            'national_id' => $request->national_id,
-            'farming_type' => $request->farming_type,
-        ]);
+      
 
-        // Redirect back with success message
-        return redirect()->back()->with('success', 'Farmer added successfully!');
+        
+        Farmer::create($validated);
+        return redirect()->route('admin.farmers')
+        ->with('success', 'Farmer registered successfully!');
+
     }
+
+    public function showFarmers()
+{
+    $farmers = Farmer::latest()->get(); // Get farmers in reverse chronological order
+    return view('layouts.registered', compact('farmers'));
+}
+
 }
 

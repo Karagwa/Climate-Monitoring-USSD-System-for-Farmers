@@ -117,10 +117,7 @@
                         <i class="mdi mdi-calendar text-success"></i>
                       </div>
                     </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Event today</p>
-                      <p class="text-muted ellipsis mb-0"> Just a reminder that you have an event today </p>
-                    </div>
+                  
                   </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item preview-item">
@@ -171,17 +168,22 @@
                       <p class="preview-subject mb-1">Settings</p>
                     </div>
                   </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-logout text-danger"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Log out</p>
-                    </div>
-                  </a>
+                 <a class="dropdown-item preview-item" href="{{ route('logout') }}"
+   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+    <div class="preview-thumbnail">
+        <div class="preview-icon bg-dark rounded-circle">
+            <i class="mdi mdi-logout text-danger"></i>
+        </div>
+    </div>
+    <div class="preview-item-content">
+        <p class="preview-subject mb-1">Log out</p>
+    </div>
+</a>
+
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
+
                   <div class="dropdown-divider"></div>
                   <p class="p-3 mb-0 text-center">Advanced settings</p>
                 </div>
@@ -191,4 +193,43 @@
               <span class="mdi mdi-format-line-spacing"></span>
             </button>
           </div>
+          @auth
+ <ul class="nav">
+          <li class="nav-item profile">
+            <div class="profile-desc">
+              <div class="profile-pic">
+                <div class="count-indicator">
+                  <img class="img-xs rounded-circle " src="admin/assets/images/faces/face15.jpg" alt="">
+                  <span class="count bg-success"></span>
+                </div>
+                <div class="profile-name">
+                  <h5 class="mb-0 font-weight-normal">{{ Auth::user()->name }}</h5>
+                      <img class="img-xs rounded-circle" src="{{ Auth::user()->profile_picture_url ?? asset('assets/images/faces/default.jpg') }}" alt="User">
+                </div>
+              </div>
+  
+
+  <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+    <a class="dropdown-item preview-item" href="{{ route('logout') }}"
+       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+      <div class="preview-thumbnail">
+        <div class="preview-icon bg-dark rounded-circle">
+          <i class="mdi mdi-logout text-danger"></i>
+        </div>
+      </div>
+      <div class="preview-item-content">
+        <p class="preview-subject mb-1">Log out</p>
+      </div>
+    </a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+      @csrf
+    </form>
+  </div>
+</li>
+@else
+<li class="nav-item">
+  <a class="nav-link" href="{{ route('login') }}">Login</a>
+</li>
+@endauth
+
         </nav>

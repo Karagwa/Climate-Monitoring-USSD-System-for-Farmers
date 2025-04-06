@@ -10,4 +10,8 @@ class Farmer extends Model
 
     protected $fillable = ['name', 'phone', 'location', 'national_id', 'farming_type'];
 }
+ function messageLogs()
+{
+    return $this->hasMany(MessageLog::class);
+}
 ?>

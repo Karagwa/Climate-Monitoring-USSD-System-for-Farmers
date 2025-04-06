@@ -46,15 +46,20 @@
             color:black;
         }
     </style>
+
+    
 </head>
 <body>
-    @include('admin.header')
+  @include('admin.header')
     @include('admin.sidebar')
+   
     <div class="main-panel">
         <div class="content-wrapper">
             <h2 class="h2_font div_center">ADD FARMER</h2>
             <div class="form_container">
-                <form action="{{ route('layouts.registered') }}" method="POST">
+                
+<form action="{{ route('admin.farmers.store') }}" method="POST">
+
                     @csrf
                     <label for="name">Farmer Name:</label>
                     <input type="text" id="name" name="name" required>
@@ -80,7 +85,9 @@
             </div>
         </div>
     </div>
-    @include('admin.script')
-    @include('admin.css')
+  
+     @include('admin.css')
+     @include('admin.script')
+    
 </body>
 </html>
