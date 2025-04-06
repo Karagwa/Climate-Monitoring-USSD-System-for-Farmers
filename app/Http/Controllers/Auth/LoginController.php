@@ -15,22 +15,23 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function login(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+  // In LoginController.php update login method:
+public function login(Request $request)
+{
+    $credentials = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
 
-        if (Auth::attempt($credentials, $request->remember)) {
-            $request->session()->regenerate();
-            return redirect()->intended('dashboard');
-        }
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+    if (Auth::attempt($credentials, $request->remember)) {
+        $request->session()->regenerate();
+        return redirect()->intended('dashboard'); // Add redirect
     }
+
+    return back()->withErrors([
+        'email' => 'The provided credentials do not match our records.',
+    ]);
+}
   
     public function logout(Request $request)
     {

@@ -47,18 +47,17 @@
         }
     </style>
 
-    
+     @include('admin.header')
+    @include('admin.sidebar')
 </head>
 <body>
-  @include('admin.header')
-    @include('admin.sidebar')
-   
-    <div class="main-panel">
+
+   <div class="main-panel">
         <div class="content-wrapper">
             <h2 class="h2_font div_center">ADD FARMER</h2>
             <div class="form_container">
                 
-<form action="{{ route('admin.farmers.store') }}" method="POST">
+<form action="{{ route('admin.farmers') }}" method="POST">
 
                     @csrf
                     <label for="name">Farmer Name:</label>
@@ -85,7 +84,21 @@
             </div>
         </div>
     </div>
-  
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+  @if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+ 
      @include('admin.css')
      @include('admin.script')
     

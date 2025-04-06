@@ -21,8 +21,6 @@
         @include('admin.body')
       @include('admin.script')
       @include('admin.css')
-    <!-- container-scroller -->
-    <!-- plugins:js -->
    
   </body>
 </html>

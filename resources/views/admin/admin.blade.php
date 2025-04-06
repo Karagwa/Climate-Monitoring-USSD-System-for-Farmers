@@ -9,19 +9,16 @@
     @include('admin.css')
        @include('admin.script')
     
-    <link rel="shortcut icon" href="../../assets/images/favicon.png" />
+   
   </head>
   <body>
-    
+ 
       @include('admin.header')
       @include('admin.sidebar')
       
      
           
-        </div>
-      </div>
-    </div>
-    
+      
  
   </body>
 </html>

@@ -1,111 +1,41 @@
-           <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-         <a class="sidebar-brand brand-logo" href="index.html"><img src="admin/assets/images/logo.svg" alt="logo" /></a>
-          <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="admin/assets/images/logo-mini.svg" alt="logo" /></a>
-        </div>
-        <ul class="nav">
-         <li class="nav-item profile">
-      <div class="profile-desc">
+<!-- This should be the only wrapper needed -->
+<div class="wrapper d-flex">
+  <!-- Sidebar - fixed position -->
+  <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #e3f2fd; position: fixed; top: 0; left: 0; height: 100vh; overflow-y: auto; z-index: 100; width: 250px;">
+    <div class="sidebar-header" style="padding: 20px; text-align: center;">
+      <h4 style="margin: 0; color: #1976d2;">Farm Management</h4>
+    </div>
+    
+    <ul class="nav flex-column" style="padding: 0 15px;">
+      <li class="nav-item nav-category" style="margin-top: 10px;">
+        <span class="nav-link" style="color: #1976d2; font-weight: 600;">Navigation</span>
+      </li>
       
-        
-          
-        </div>
-        
-
-              <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
-              <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-settings text-primary"></i>
-                    </div>
-                  
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-onepassword  text-info"></i>
-                    </div>
-                    <div>Sidebar Loaded</div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-calendar-today text-success"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </li>
-          <li class="nav-item nav-category">
-            <span class="nav-link">Navigation</span>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="index.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
-              </span>
-              <span class="menu-title">Dashboard</span>
-            </a>
-          </li>
-       
-          
-          <li class="nav-item menu-items">
-          <a class="nav-link" href="{{ route('admin.farmer.registration') }}">
-              <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
-              </span>
-              <span class="menu-title">Farmer registration</span>
-            </a>
-          </li>
-           <li class="nav-item menu-items">
-            <a class="nav-link" href="{{url('registered')}}">
-              <span class="menu-icon">
-                <i class="mdi mdi-table-large"></i>
-              </span>
-              <span class="menu-title">Registered Farmers</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
-    <a class="nav-link" href="{{ route('admin.analytics') }}">
-        <span class="menu-icon">
-            <i class="mdi mdi-chart-bar"></i>
-        </span>
-        <span class="menu-title">Analytics</span>
-    </a>
-</li>
-          
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="admin/pages/charts/chartjs.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-chart-bar"></i>
-              </span>
-              <span class="menu-title">Charts</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="admin/pages/icons/mdi.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-contacts"></i>
-              </span>
-              <span class="menu-title">Icons</span>
-            </a>
-          </li>
-         
-        
-          
-        </ul>
-      </nav>
+      <li class="nav-item menu-items" style="margin: 5px 0;">
+        <a class="nav-link" href="{{ route('admin.farmer.registration') }}" style="color: #0d47a1; border-radius: 4px;">
+          <span class="menu-icon">
+            <i class="mdi mdi-account-plus" style="color: #1976d2;"></i>
+          </span>
+          <span class="menu-title">Farmer Registration</span>
+        </a>
+      </li>
+      
+      <li class="nav-item menu-items" style="margin: 5px 0;">
+        <a class="nav-link" href="{{ route('admin.farmers') }}" style="color: #0d47a1; border-radius: 4px;">
+          <span class="menu-icon">
+            <i class="mdi mdi-table-large" style="color: #1976d2;"></i>
+          </span>
+          <span class="menu-title">Registered Farmers</span>
+        </a>
+      </li>
+      
+      <li class="nav-item menu-items" style="margin: 5px 0;">
+        <a class="nav-link" href="{{ route('admin.analytics') }}" style="color: #0d47a1; border-radius: 4px;">
+          <span class="menu-icon">
+            <i class="mdi mdi-chart-bar" style="color: #1976d2;"></i>
+          </span>
+          <span class="menu-title">Analytics</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
